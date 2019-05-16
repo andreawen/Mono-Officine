@@ -1,0 +1,39 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<div *ngIf='data'><h3>Benvenuto {{data.result.username}}</h3></div>
+
+<div class="container login-container" *ngIf="visible">
+            <div class="row">
+                <div class="col-md-6 login-form-1">
+                    <h3>Login</h3>
+                    <form>
+                        <div class="form-group">
+                            <input #username type="text" class="form-control" placeholder="Username" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input #password type="password" class="form-control" placeholder="Password" value="" />
+                        </div>
+                        <div class="form-group">
+                             <input (click)= "onClick(username.value,password.value)" (click)= "toggleDiv()" type="submit" value="Accedi" class="btnSubmit"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 login-form-2">
+                    <h3>Registrazione</h3>
+                    <form>
+                        <div class="form-group">
+                            <input #username type="text" class="form-control" placeholder="Username" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input #password type="password" class="form-control" placeholder="Password" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input (click)= "onClick2(username.value,password.value)" (click)= "toggleDiv()" type="submit" value="Registrati" class="btnSubmit"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
