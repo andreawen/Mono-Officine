@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { Login } from './login.model';
+import { Registrazione } from './registrazione.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 @Component({
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
   o: Observable<Object>;
   obs: Observable<Login[]>;
   wen: Array<Login> = new Array();
+  wen2: Array<Registrazione> = new Array();
   constructor(public http: HttpClient) { }
 
   ngOnInit() {
@@ -32,16 +34,16 @@ export class AppComponent implements OnInit {
     this.toggleDiv();
   }
 
-  onClick2(username: string, password: string) : boolean
+  onClick2(username2: string, password2: string) : boolean
   {
 
-    let dati: Login = new Login();
-    dati.username = username;
-    dati.password = password;
-    console.log(this.wen.length);
-    console.log(dati);
-    this.wen.push(dati);
-    this.Registrati(dati);
+    let dati2: Registrazione = new Registrazione();
+    dati2.username2 = username2;
+    dati2.password2 = password2;
+    console.log(this.wen2.length);
+    console.log(dati2);
+    this.wen2.push(dati2);
+    this.Registrati(dati2);
     return false;
     this.toggleDiv();
   }
@@ -49,15 +51,15 @@ export class AppComponent implements OnInit {
   toggleDiv(){this.visible=false;}
 
      Accedi(dati:Login): void {
-   this.http.get('http://node17.codenvy.io:35335/login/'+dati.username+'/'+dati.password)
+   this.http.get('http://node16.codenvy.io:41026/login/'+dati.username+'/'+dati.password)
      .subscribe(data => {
        this.data = data;
        console.log(this.data);
      });
  }
 
-     Registrati(dati:Login): void {
-   this.http.post('http://node17.codenvy.io:35335/registrazione',{login:dati.username,pass:dati.password})
+     Registrati(dati2:Registrazione): void {
+   this.http.get('http://node16.codenvy.io:41026/registrazione'+dati2.username2+'/'+dati2.password2)
      .subscribe(data => {
        this.data = data;
        console.log(this.data);
