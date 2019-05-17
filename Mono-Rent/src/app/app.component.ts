@@ -50,14 +50,15 @@ export class AppComponent implements OnInit {
     this.Registrati(dati2);
     return false;
   }
+
   private toggleDiv(): void { this.visible = false; this.invisible = true; }
   private map(): void { this.mappa = true;  }
   private onVedi(): void { this.a = false; this.b = true; }
   private onVedi2(): void { this.a = true; this.b = false; }
   private reload():void { window.location.reload();}
-  
+
   Accedi(dati: Login): void {
-    this.http.get<Object>('http://node11.codenvy.io:59728/login/' + dati.username + '/' + dati.password)
+    this.http.get<Object>('http://node16.codenvy.io:44633/login/' + dati.username + '/' + dati.password)
       .subscribe(data => {
 
         var a: any;
@@ -70,18 +71,16 @@ export class AppComponent implements OnInit {
         }else{
           this.err ="Username o password errati"
         }
-
         console.log(this.data);
       });
   }
 
   Registrati(dati2: Registrazione): void {
-    this.http.post('http://node11.codenvy.io:59728/registrazione', { login: dati2.username2, pass: dati2.password2 })
+    this.http.post('http://node16.codenvy.io:44633/registrazione', { login: dati2.username2, pass: dati2.password2 })
       .subscribe(data => {
         this.data = data;
         console.log(this.data);
         this.ok = "Ora effettua l'accesso con il tuo Account";
-        //window.location.reload();
       });
   }
 
