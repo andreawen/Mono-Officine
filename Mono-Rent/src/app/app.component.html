@@ -1,40 +1,68 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-
-<div *ngIf='data'><h3>Benvenuto {{data.result.username}}</h3></div>
-
-<div class="container login-container" *ngIf="visible">
-            <div class="row">
-                <div class="col-md-6 login-form-1">
-                    <h3>Login</h3>
-                    <form>
-                        <div class="form-group">
-                            <input #username type="text" class="form-control" placeholder="Username" value="" />
-                        </div>
-                        <div class="form-group">
-                            <input #password type="password" class="form-control" placeholder="Password" value="" />
-                        </div>
-                        <div class="form-group">
-                             <input (click)= "onClick(username.value,password.value)" (click)= "toggleDiv()" type="submit" value="Accedi" class="btnSubmit"/>
-                        </div>
-                    </form>
-                </div>
-                <!--<div class="col-md-6 login-form-2">
-                    <h3>Registrazione</h3>
-                    <form>
-                        <div class="form-group">
-                            <input #username2 type="text" class="form-control" placeholder="Username" value="" />
-                        </div>
-                        <div class="form-group">
-                            <input #password2 type="password" class="form-control" placeholder="Password" value="" />
-                        </div>
-                        <div class="form-group">
-                            <input (click)= "onClick2(username2.value,password2.value)" (click)= "toggleDiv()" type="submit" value="Registrati" class="btnSubmit"/>
-                        </div>
-                    </form>
-                </div>-->
-            </div>
+<!--  NAVBAR  -->
+<div class="navbar navbar-default navbar-fixed-top" *ngIf="invisible">
+    <div class="container2">
+        <div class="navbar-header">
+            <a class="navbar-brand" rel="home">
+                <img style="max-width:40px; margin-top: -10px;" src="https://cdn2.iconfinder.com/data/icons/electric-transport/100/electric_scooter_5-512.png">
+            </a>
         </div>
-<app-map></app-map>
+        <div id="navbar" class="collapse navbar-collapse navbar-responsive-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a><b>AMONO-RENT</b></a></li>
+                <li><a (click)="map()">Mappa</a></li>
+                <li><a (click)="reload()">logout</a></li>
+            </ul>
+				</div>
+		</div>
+</div>
+
+<!--  FORM PER LOGIN  -->
+<div class="container" *ngIf="visible">
+  <div class="login-form" *ngIf="a">
+      <h2>Accedi al tuo Account</h2>
+      <form>
+          <div class="text-center">
+              <img src="https://ssl.gstatic.com/images/branding/product/1x/avatar_circle_blue_512dp.png" class="img-circle avatar" alt="Avatar">
+          </div>
+          <div class="form-group">
+              <input #username type="text" class="form-control" placeholder="Username" value="" class="input" required="required" class="form-control"/>
+              <input #password type="password" class="form-control" placeholder="Password" value="" class="input" required="required" class="form-control"/>
+          </div>
+          <p class="text-center"><font color="#e60000">{{err}}</font></p>
+          <div class="form-group">
+              <input (click)= "onClick(username.value,password.value)" type="submit" value="Accedi" class="btn btn-primary btn-block"/>
+          </div>
+      </form>
+      <p (click)= "onVedi()" class="text-center"><a href="#">Crea un Account</a></p>
+  </div>
+  
+<!--  FORM PER REGISTRAZIONE  -->
+  <div class="login-form" *ngIf="b">
+      <h2>Crea un Account</h2>
+      <form>
+          <div class="text-center">
+              <img src="https://ssl.gstatic.com/images/branding/product/1x/avatar_circle_blue_512dp.png" class="img-circle avatar" alt="Avatar">
+          </div>
+          <div class="form-group">
+              <input #username2 type="text" class="form-control" placeholder="Username" value="" class="input" required="required" class="form-control"/>
+              <input #password2 type="password" class="form-control" placeholder="Password" value="" class="input" required="required" class="form-control"/>
+          </div>
+          <p class="text-center">{{ok}}</p>
+          <div class="form-group">
+              <input (click)= "onClick2(username2.value,password2.value)"  type="submit" value="Crea" class="btn btn-primary btn-block"/>
+          </div>
+      </form>
+      <p (click)= "onVedi2()" class="text-center"><a href="#">Accedi al tuo Account</a></p>
+  </div>
+</div>
+
+<!--  MAPPA  -->
+<app-map *ngIf="mappa"></app-map>
+

@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Login } from './login.model';
 import { Registrazione } from './registrazione.model';
 import { HttpClient } from '@angular/common/http';
@@ -15,13 +15,19 @@ export class AppComponent implements OnInit {
   obs: Observable<Login[]>;
   wen: Array<Login> = new Array();
   wen2: Array<Registrazione> = new Array();
+  visible: boolean = true;
+  invisible: boolean = false;
+  mappa: boolean = false;
+  a: boolean = true;
+  b: boolean = false;
+  err: String = "";
+  ok: String = "";
   constructor(public http: HttpClient) { }
 
   ngOnInit() {
   }
 
-  onClick(username: string, password: string) : boolean
-  {
+  onClick(username: string, password: string): boolean {
 
     let dati: Login = new Login();
     dati.username = username;
@@ -31,11 +37,9 @@ export class AppComponent implements OnInit {
     this.wen.push(dati);
     this.Accedi(dati);
     return false;
-    this.toggleDiv();
   }
 
-  onClick2(username2: string, password2: string) : boolean
-  {
+  onClick2(username2: string, password2: string): boolean {
 
     let dati2: Registrazione = new Registrazione();
     dati2.username2 = username2;
@@ -45,25 +49,40 @@ export class AppComponent implements OnInit {
     this.wen2.push(dati2);
     this.Registrati(dati2);
     return false;
-    this.toggleDiv();
   }
-  visible = true;
-  toggleDiv(){this.visible=false;}
+  private toggleDiv(): void { this.visible = false; this.invisible = true; }
+  private map(): void { this.mappa = true;  }
+  private onVedi(): void { this.a = false; this.b = true; }
+  private onVedi2(): void { this.a = true; this.b = false; }
+  private reload():void { window.location.reload();}
+  
+  Accedi(dati: Login): void {
+    this.http.get<Object>('http://node11.codenvy.io:59728/login/' + dati.username + '/' + dati.password)
+      .subscribe(data => {
 
-     Accedi(dati:Login): void {
-   this.http.get('http://node16.codenvy.io:41026/login/'+dati.username+'/'+dati.password)
-     .subscribe(data => {
-       this.data = data;
-       console.log(this.data);
-     });
- }
+        var a: any;
+        a = data;
+        console.log(a.result);
 
-     Registrati(dati2:Registrazione): void {
-   this.http.get('http://node16.codenvy.io:41026/registrazione'+dati2.username2+'/'+dati2.password2)
-     .subscribe(data => {
-       this.data = data;
-       console.log(this.data);
-     });
- }
+        this.data = data;
+        if (a.result != "Errore") {
+          this.toggleDiv();
+        }else{
+          this.err ="Username o password errati"
+        }
+
+        console.log(this.data);
+      });
+  }
+
+  Registrati(dati2: Registrazione): void {
+    this.http.post('http://node11.codenvy.io:59728/registrazione', { login: dati2.username2, pass: dati2.password2 })
+      .subscribe(data => {
+        this.data = data;
+        console.log(this.data);
+        this.ok = "Ora effettua l'accesso con il tuo Account";
+        //window.location.reload();
+      });
+  }
 
 }
