@@ -17,6 +17,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a><b>MONO-RENT</b></a></li>
                 <li><a (click)="map()">Mappa</a></li>
+                <li><a (click)="qrcode()">Noleggio</a></li>
             </ul>
             <form class="navbar-form navbar-right" role="search" method="get" id="searchform" action="">
 				      <div class="form-group">
@@ -30,7 +31,10 @@
 		</div>
 </div>
 
-<!--  FORM PER LOGIN  -->
+<img *ngIf="img" src="https://cdn.vox-cdn.com/uploads/chorus_image/image/61013661/scooters_illo.0.jpg" width="100%">
+
+
+<!--  FORM PER LOGIN E REGISTRAZIONE -->
 <div class="container" *ngIf="visible">
   <div class="login-form" *ngIf="a">
       <h2>Accedi al tuo Account</h2>
@@ -39,8 +43,8 @@
               <img src="https://ssl.gstatic.com/images/branding/product/1x/avatar_circle_blue_512dp.png" class="img-circle avatar" alt="Avatar">
           </div>
           <div class="form-group">
-              <input #username type="text" class="form-control" placeholder="Username" value="" class="input" class="form-control" required/>
-              <input #password type="password" class="form-control" placeholder="Password" value="" class="input" class="form-control" required/>
+              <input #username type="text" class="form-control" placeholder="Username" value="" class="input" class="form-control" name="username" required/>
+              <input #password type="password" class="form-control" placeholder="Password" value="" class="input" class="form-control" name="password" required/>
           </div>
           <p class="text-center"><font color="#e60000">{{err}}</font></p>
           <div class="form-group">
@@ -49,8 +53,6 @@
       </form>
       <p (click)= "onVedi()" class="text-center"><a href="#">Crea un Account</a></p>
   </div>
-
-<!--  FORM PER REGISTRAZIONE  -->
   <div class="login-form" *ngIf="b">
       <h2>Crea un Account</h2>
       <form>
@@ -58,8 +60,8 @@
               <img src="https://ssl.gstatic.com/images/branding/product/1x/avatar_circle_blue_512dp.png" class="img-circle avatar" alt="Avatar">
           </div>
           <div class="form-group">
-              <input #username2 type="text" class="form-control" placeholder="Username" value="" class="input" class="form-control" maxlength="15" required/>
-              <input #password2 type="password" class="form-control" placeholder="Password" value="" class="input" class="form-control" required/>
+              <input #username2 type="text" class="form-control" placeholder="Username" value="" class="input" class="form-control" maxlength="15" name="username" required/>
+              <input #password2 type="password" class="form-control" placeholder="Password" value="" class="input" class="form-control" name="password" required/>
           </div>
           <p class="text-center">{{ok}}</p>
           <div class="form-group">
@@ -70,6 +72,10 @@
   </div>
 </div>
 
+<!--  FORM QR CODE -->
+<app-qr-code *ngIf="qr"></app-qr-code>
+
 <!--  MAPPA  -->
 <app-map *ngIf="mappa"></app-map>
+
 

@@ -18,6 +18,8 @@ export class AppComponent implements OnInit {
   visible: boolean = true;
   invisible: boolean = false;
   mappa: boolean = false;
+  img: boolean = false;
+  qr: boolean = false;
   a: boolean = true;
   b: boolean = false;
   err: String = "";
@@ -51,14 +53,15 @@ export class AppComponent implements OnInit {
     return false;
   }
 
-  private toggleDiv(): void { this.visible = false; this.invisible = true; }
-  private map(): void { this.mappa = true;  }
+  private toggleDiv(): void { this.visible = false; this.invisible = true; this.img = true;}
+  private map(): void { this.mappa = true;this.qr = false; this.img = false; }
+  private qrcode(): void { this.qr = true; this.mappa = false; this.img = false; }
   private onVedi(): void { this.a = false; this.b = true; }
   private onVedi2(): void { this.a = true; this.b = false; }
   private reload():void { window.location.reload();}
 
   Accedi(dati: Login): void {
-    this.http.get<Object>('http://node16.codenvy.io:44633/login/' + dati.username + '/' + dati.password)
+    this.http.get<Object>('http://node10.codenvy.io:46997/login/' + dati.username + '/' + dati.password)
       .subscribe(data => {
 
         var a: any;
@@ -76,7 +79,7 @@ export class AppComponent implements OnInit {
   }
 
   Registrati(dati2: Registrazione): void {
-    this.http.post('http://node16.codenvy.io:44633/registrazione', { login: dati2.username2, pass: dati2.password2 })
+    this.http.post('http://node10.codenvy.io:46997/registrazione', { login: dati2.username2, pass: dati2.password2 })
       .subscribe(data => {
         this.data = data;
         console.log(this.data);
