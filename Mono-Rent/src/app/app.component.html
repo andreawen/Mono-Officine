@@ -8,23 +8,23 @@
 <!--  NAVBAR  -->
 <div class="navbar navbar-default navbar-fixed-top" *ngIf="invisible">
     <div class="container2">
-        <div class="navbar-header">
+        <!--<div class="navbar-header">
             <a class="navbar-brand" rel="home">
-                <img style="max-width:40px; margin-top: -10px;" src="https://cdn2.iconfinder.com/data/icons/electric-transport/100/electric_scooter_5-512.png">
+                <img style="max-width:35px; margin-top: -10px;" src="https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-512.png">
             </a>
-        </div>
+        </div>-->
         <div id="navbar" class="collapse navbar-collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a><b>MONO-RENT</b></a></li>
-                <li><a (click)="map()">Mappa</a></li>
-                <li><a (click)="qrcode()">Noleggio</a></li>
+                <li><a (click)="home()"><b>MONO-RENT </b><img style="max-width:20px; margin-top: -10px;" src="https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-512.png"></a></li>
+                <li><a (click)="map()">MAPPA <img style="max-width:25px; margin-top: -10px;" src="https://png.pngtree.com/svg/20170217/5a47dc4f9e.png"></a></li>
+                <li><a (click)="qrcode()">NOLEGGIO <img style="max-width:35px; margin-top: -10px;" src="https://cdn3.iconfinder.com/data/icons/transport-04-set-of-motorcycles-and-bicycles/100/Motorcycles_and_bicycles_11-512.png"></a></li>
             </ul>
             <form class="navbar-form navbar-right" role="search" method="get" id="searchform" action="">
 				      <div class="form-group">
-                <p style="margin-right: 30px;margin-top:3px;margin-down:3px">Bentornato: <b>{{data.result.username}}</b></p>
+                <p style="margin-right: 30px;">Bentornato: <b>{{data.result.username}}</b></p>
 				      </div>
               <div class="form-group">
-					      <p (click)="reload()" href="#" style="margin-right: 10px;margin-top:3px;margin-down:3px">logout</p>
+					      <p (click)="reload()" href="#" style="margin-right: 10px;">logout</p>
 				      </div>
 			      </form>
 				</div>

@@ -1,3 +1,9 @@
-<agm-map [zoom]="14" [latitude]="lat" [longitude]="lng">
-  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+<agm-map [zoom]="15" [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng">
+        <agm-info-window>
+            <p><b>Tu sei qui!</b></p>
+        </agm-info-window>
+    </agm-marker>
+    <agm-marker *ngFor="let data of monoPa" [latitude]="data.position.lat" [longitude]="data.position.lng">
+    </agm-marker>
 </agm-map>

@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
   private reload():void { window.location.reload();}
 
   Accedi(dati: Login): void {
-    this.http.get<Object>('http://node10.codenvy.io:46997/login/' + dati.username + '/' + dati.password)
+    this.http.get<Object>('http://node25.codenvy.io:33765/login/' + dati.username + '/' + dati.password)
       .subscribe(data => {
 
         var a: any;
@@ -79,7 +79,7 @@ export class AppComponent implements OnInit {
   }
 
   Registrati(dati2: Registrazione): void {
-    this.http.post('http://node10.codenvy.io:46997/registrazione', { login: dati2.username2, pass: dati2.password2 })
+    this.http.post('http://node25.codenvy.io:33765/registrazione', { login: dati2.username2, pass: dati2.password2 })
       .subscribe(data => {
         this.data = data;
         console.log(this.data);
