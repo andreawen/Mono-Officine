@@ -1,9 +1,12 @@
 <agm-map [zoom]="15" [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng">
-        <agm-info-window>
-            <p><b>Tu sei qui!</b></p>
+	<agm-marker [latitude]="lat" [longitude]="lng">
+		<agm-info-window>
+			<b>Tu sei qui!</b>
         </agm-info-window>
     </agm-marker>
-    <agm-marker *ngFor="let data of monoPa" [latitude]="data.position.lat" [longitude]="data.position.lng">
+    <agm-marker *ngFor="let data of monoPa" [latitude]="data.lat" [longitude]="data.lng" [iconUrl]="icon">
+        <agm-info-window [maxWidth]="300">
+            <app-qr-code></app-qr-code>
+        </agm-info-window>
     </agm-marker>
 </agm-map>

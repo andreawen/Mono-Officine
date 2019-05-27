@@ -4,34 +4,30 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <!--  NAVBAR  -->
-<div class="navbar navbar-default navbar-fixed-top" *ngIf="invisible">
-    <div class="container2">
-        <!--<div class="navbar-header">
-            <a class="navbar-brand" rel="home">
-                <img style="max-width:35px; margin-top: -10px;" src="https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-512.png">
-            </a>
-        </div>-->
-        <div id="navbar" class="collapse navbar-collapse navbar-responsive-collapse">
-            <ul class="nav navbar-nav">
-                <li><a (click)="home()"><b>MONO-RENT </b><img style="max-width:20px; margin-top: -10px;" src="https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-512.png"></a></li>
-                <li><a (click)="map()">MAPPA <img style="max-width:25px; margin-top: -10px;" src="https://png.pngtree.com/svg/20170217/5a47dc4f9e.png"></a></li>
-                <li><a (click)="qrcode()">NOLEGGIO <img style="max-width:35px; margin-top: -10px;" src="https://cdn3.iconfinder.com/data/icons/transport-04-set-of-motorcycles-and-bicycles/100/Motorcycles_and_bicycles_11-512.png"></a></li>
-            </ul>
-            <form class="navbar-form navbar-right" role="search" method="get" id="searchform" action="">
-				      <div class="form-group">
-                <p style="margin-right: 30px;">Bentornato: <b>{{data.result.username}}</b></p>
-				      </div>
-              <div class="form-group">
-					      <p (click)="reload()" href="#" style="margin-right: 10px;">logout</p>
-				      </div>
-			      </form>
-				</div>
-		</div>
+<div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="invisible">
+          <h2>MONO-RENT</h2>
+
+          <div class="collapse navbar-collapse" id="navbarCollapse8">
+              <div class="navbar-nav">
+                  <a (click)="home()" class="nav-item nav-link">Home <img style="max-width:30px;" src="https://image.flaticon.com/icons/png/512/25/25694.png"></a>
+                  <a (click)="map()" class="nav-item nav-link">Mappa <img style="max-width:30px;" src="https://png.pngtree.com/svg/20170217/5a47dc4f9e.png"></a>
+              </div>
+              <form class="form-inline ml-auto">
+                  Bentornato: <b>{{data.result.username}}</b>&nbsp; &nbsp;<img (click)="reload()" style="max-width:30px;" src="https://cdn3.iconfinder.com/data/icons/social-messaging-productivity-6/128/profile-male-circle2-512.png">&nbsp; Logout
+              </form>
+          </div>
+  </nav>
 </div>
 
-<img *ngIf="img" src="https://cdn.vox-cdn.com/uploads/chorus_image/image/61013661/scooters_illo.0.jpg" width="100%">
+<img *ngIf="img" src="https://wallpaperplay.com/walls/full/d/b/c/89546.jpg" width="100%" height="60%">
 
 
 <!--  FORM PER LOGIN E REGISTRAZIONE -->
@@ -73,7 +69,7 @@
 </div>
 
 <!--  FORM QR CODE -->
-<app-qr-code *ngIf="qr"></app-qr-code>
+
 
 <!--  MAPPA  -->
 <app-map *ngIf="mappa"></app-map>

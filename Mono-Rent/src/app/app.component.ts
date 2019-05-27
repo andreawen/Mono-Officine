@@ -24,7 +24,9 @@ export class AppComponent implements OnInit {
   b: boolean = false;
   err: String = "";
   ok: String = "";
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient) {
+
+  }
 
   ngOnInit() {
   }
@@ -55,13 +57,14 @@ export class AppComponent implements OnInit {
 
   private toggleDiv(): void { this.visible = false; this.invisible = true; this.img = true;}
   private map(): void { this.mappa = true;this.qr = false; this.img = false; }
+  private home(): void { this.mappa = false;this.qr = false; this.img = true; }
   private qrcode(): void { this.qr = true; this.mappa = false; this.img = false; }
   private onVedi(): void { this.a = false; this.b = true; }
   private onVedi2(): void { this.a = true; this.b = false; }
   private reload():void { window.location.reload();}
 
   Accedi(dati: Login): void {
-    this.http.get<Object>('http://node25.codenvy.io:33765/login/' + dati.username + '/' + dati.password)
+    this.http.get<Object>('https://3000-d0e6a422-af39-482f-85ec-554b1e6334c0.ws-eu0.gitpod.io/login/' + dati.username + '/' + dati.password)
       .subscribe(data => {
 
         var a: any;
@@ -75,11 +78,13 @@ export class AppComponent implements OnInit {
           this.err ="Username o password errati"
         }
         console.log(this.data);
+        var id=a.result._id;
+        console.log(id);
       });
   }
 
   Registrati(dati2: Registrazione): void {
-    this.http.post('http://node25.codenvy.io:33765/registrazione', { login: dati2.username2, pass: dati2.password2 })
+    this.http.post('https://3000-d0e6a422-af39-482f-85ec-554b1e6334c0.ws-eu0.gitpod.io/registrazione', { login: dati2.username2, pass: dati2.password2 })
       .subscribe(data => {
         this.data = data;
         console.log(this.data);

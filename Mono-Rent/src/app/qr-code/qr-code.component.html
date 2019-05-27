@@ -1,11 +1,9 @@
-<section>
-    <img class="img" src="https://images2.corriereobjects.it/methode_image/2019/02/11/Tecnologia/Foto%20Tecnologia%20-%20Trattate/11641918_MGZOOM-kKSE-U3100409010041vxD-656x492@Corriere-Web-Sezioni.jpg?v=20190211152134"  width="40%">
-  <article>
-    <h1>Noleggio</h1>
-    <br>
-    <p>Inserire Qr Code Monopattino</p>
-    <input #qr type="file"/>
-    <br>
-    <input #inizia type="submit" class="btn btn-primary btn-block" value="Inizia Noleggio"/>
-  </article>
-</section>
+<div class="text-center">
+	<img class="img" src="https://media.wired.com/photos/5c61ddc4edce4f5f279e64c9/master/w_1920,c_limit/Mi-Electric-Scooter_TA.jpg"  width="50%">
+  <br><br>
+  <p>Inserire Qr Code Monopattino</p>
+  <input #qr type="file"/>
+  <br>
+  <input (click)="inizioNoleggio()" #inizio *ngIf="inizio" type="submit" class="btn btn-success" value="Inizia Noleggio"/>
+  <input (click)="fineNoleggio()" #fine *ngIf="fine" type="submit" class="btn btn-danger" value="Fine Noleggio"/>
+</div>

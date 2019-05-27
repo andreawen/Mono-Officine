@@ -10,12 +10,12 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class MapComponent implements OnInit {
   lat = 45.4654219;
-  lng= 9.1859243;
+  lng = 9.1859243;
   o: Observable<Object>;
   mono: Observable<Monopattino[]>;
   monoPa: Monopattino[] = [];
 
-    constructor(public http: HttpClient) {
+  constructor(public http: HttpClient) {
     this.findMe();
     this.invioPosizione();
   }
@@ -24,18 +24,26 @@ export class MapComponent implements OnInit {
   }
 
   findMe() {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
-        console.log("Coordinate: " + this.lat + ", " + this.lng);
-      });
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.lat = position.coords.latitude;
+      this.lng = position.coords.longitude;
+      console.log("Coordinate: " + this.lat + ", " + this.lng);
+    });
   }
 
   invioPosizione(): void {
-    this.mono = this.http.get<Monopattino[]>('http://node25.codenvy.io:33765/coordinate');
+    this.mono = this.http.get<Monopattino[]>('https://3000-d0e6a422-af39-482f-85ec-554b1e6334c0.ws-eu0.gitpod.io/coordinate');
     this.mono.subscribe(data => {
-        console.log(data);
+      this.monoPa = data;
+      console.log(data);
     });
+  }
+  icon={
+    url:"./assets/img/1.png",
+    scaledSize:{
+      width:50,
+      height:50
+    }
   }
 }
 
