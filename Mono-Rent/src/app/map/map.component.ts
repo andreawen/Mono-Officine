@@ -14,10 +14,11 @@ export class MapComponent implements OnInit {
   o: Observable<Object>;
   mono: Observable<Monopattino[]>;
   monoPa: Monopattino[] = [];
-
+  user:string;
   constructor(public http: HttpClient) {
     this.findMe();
     this.invioPosizione();
+    this.user = localStorage.getItem('username');
   }
 
   ngOnInit() {
@@ -41,8 +42,15 @@ export class MapComponent implements OnInit {
   icon={
     url:"./assets/img/1.png",
     scaledSize:{
-      width:50,
-      height:50
+      width:60,
+      height:60
+    }
+  }
+  icona={
+    url:"./assets/img/123.png",
+    scaledSize:{
+      width:60,
+      height:60
     }
   }
 }

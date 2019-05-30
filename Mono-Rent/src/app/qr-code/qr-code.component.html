@@ -1,9 +1,12 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 <div class="text-center">
-	<img class="img" src="https://media.wired.com/photos/5c61ddc4edce4f5f279e64c9/master/w_1920,c_limit/Mi-Electric-Scooter_TA.jpg"  width="50%">
+	<img class="img" src="https://media.wired.com/photos/5c61ddc4edce4f5f279e64c9/master/w_1920,c_limit/Mi-Electric-Scooter_TA.jpg"  width="80%">
+  <!--<p>Inserire Qr Code Monopattino </p>
+  <input #qr type="file"/>!-->
   <br><br>
-  <p>Inserire Qr Code Monopattino</p>
-  <input #qr type="file"/>
+  <input (click)="inizioNoleggio()" style="padding:7px 15px 7px 15px; font-size:15px" #inizio *ngIf="inizio" type="submit" class="btn btn-success" value="Inizia Noleggio"/>
+  <input (click)="fineNoleggio()" style="padding:7px 15px 7px 15px; font-size:15px" #fine *ngIf="fine"  type="submit" class="btn btn-danger" value="Fine Noleggio"/>
   <br>
-  <input (click)="inizioNoleggio()" #inizio *ngIf="inizio" type="submit" class="btn btn-success" value="Inizia Noleggio"/>
-  <input (click)="fineNoleggio()" #fine *ngIf="fine" type="submit" class="btn btn-danger" value="Fine Noleggio"/>
+
 </div>
+

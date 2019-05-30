@@ -22,14 +22,15 @@ export class AppComponent implements OnInit {
   qr: boolean = false;
   a: boolean = true;
   b: boolean = false;
+  profilo: boolean = false;
   err: String = "";
   ok: String = "";
   constructor(public http: HttpClient) {
-
   }
 
   ngOnInit() {
   }
+
 
   onClick(username: string, password: string): boolean {
 
@@ -56,12 +57,13 @@ export class AppComponent implements OnInit {
   }
 
   private toggleDiv(): void { this.visible = false; this.invisible = true; this.img = true;}
-  private map(): void { this.mappa = true;this.qr = false; this.img = false; }
-  private home(): void { this.mappa = false;this.qr = false; this.img = true; }
+  private map(): void { this.mappa = true;this.qr = false; this.img = false; this.profilo=false}
+  private home(): void { this.mappa = false;this.qr = false; this.img = true; this.profilo=false}
   private qrcode(): void { this.qr = true; this.mappa = false; this.img = false; }
   private onVedi(): void { this.a = false; this.b = true; }
   private onVedi2(): void { this.a = true; this.b = false; }
   private reload():void { window.location.reload();}
+  private account():void { this.mappa = false;this.qr = false; this.img = false;this.profilo=true}
 
   Accedi(dati: Login): void {
     this.http.get<Object>('https://3000-d0e6a422-af39-482f-85ec-554b1e6334c0.ws-eu0.gitpod.io/login/' + dati.username + '/' + dati.password)
@@ -79,7 +81,10 @@ export class AppComponent implements OnInit {
         }
         console.log(this.data);
         var id=a.result._id;
+        var username=a.result.username;
         console.log(id);
+        console.log(username);
+        localStorage.setItem('username', username);
       });
   }
 

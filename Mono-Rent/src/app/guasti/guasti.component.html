@@ -1,0 +1,19 @@
+
+
+<div>
+  <button class="open-button" (click)="openForm()">Segnala guasto</button>
+    <div class="form-popup" id="myForm">
+      <form class="form-container">
+        <br>
+        <label for="email">Inserisci id monopattino</label>
+        <input type="text" placeholder="" name="id" required>
+        <label for="email">Descrivi il guasto</label>
+        <input type="text" placeholder="" name="desc" required>
+
+        <button type="submit" class="btn">Invia</button>
+        <button type="button" class="btn cancel" (click)="closeForm()">Chiudi</button>
+      </form>
+    </div>
+</div>
+
+
